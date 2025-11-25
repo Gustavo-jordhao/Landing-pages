@@ -181,12 +181,16 @@
       );
     }
 
-    function PortfolioItem({ image, category, title }) {
+    function PortfolioItem({ image, fallbackImage, category, title }) {
       return (
         <FadeInSection>
           <div className="relative group overflow-hidden rounded-xl h-64 cursor-pointer border border-white/5">
             <img
               src={image}
+              onError={(e) => {
+                e.target.onerror = null; 
+                if (fallbackImage) e.target.src = fallbackImage;
+              }}
               alt={title}
               className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-700"
             />
@@ -328,6 +332,10 @@
                        
                        <img 
                          src="hero-image.jpg" 
+                         onError={(e) => {
+                             e.target.onerror = null; 
+                             e.target.src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800";
+                         }}
                          alt="Gustavo Carrias - Web Designer" 
                          className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700 ease-out hero-image-mask"
                        />
@@ -427,23 +435,19 @@
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <PortfolioItem 
                   image="clinica.jpg" 
+                  fallbackImage="https://images.unsplash.com/photo-1626045436818-de08f2293811?auto=format&fit=crop&q=80&w=800"
                   category="Estética" title="Clínica Royal" 
                 />
                 <PortfolioItem 
                   image="burger.jpg" 
+                  fallbackImage="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=800"
                   category="Gastronomia" title="Burger House" 
                 />
                 <PortfolioItem 
                   image="barber.jpg" 
+                  fallbackImage="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=800"
                   category="Serviços" title="Barber Shop" 
                 />
-              </div>
-              
-              <div className="mt-12">
-                <p className="text-gray-500 text-sm mb-4">E muito mais...</p>
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border-b border-[#D4AF37] text-[#D4AF37] pb-1 hover:text-white hover:border-white transition-all">
-                  Ver portfólio completo no WhatsApp
-                </a>
               </div>
             </div>
           </section>
