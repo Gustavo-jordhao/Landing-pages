@@ -134,7 +134,7 @@
       return [containerRef, isVisible];
     };
 
-    const FadeInSection = ({ children, className = "", delay = 0 }) => {
+    const FadeInSection = ({ children, delay = 0 }) => {
       const [ref, isVisible] = useElementOnScreen({
         root: null,
         rootMargin: "0px",
@@ -145,7 +145,7 @@
         <div
           ref={ref}
           style={{ transitionDelay: `${delay}ms` }}
-          className={`transition-all duration-1000 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} ${className}`}
+          className={`transition-all duration-1000 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
           {children}
         </div>
@@ -274,85 +274,49 @@
             </div>
           </nav>
 
-          {/* HERO */}
+          {/* HERO SECTION (Centralizada, sem imagem) */}
           <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-            <div className="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-              {/* Esquerda */}
-              <div className="lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left z-20">
-                <FadeInSection>
-                  <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-[#D4AF37] text-xs font-semibold tracking-wider uppercase">
-                    Web Design Premium
-                  </div>
-                </FadeInSection>
+            <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+              
+              <FadeInSection>
+                <div className="inline-block mb-6 px-4 py-1.5 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-[#D4AF37] text-xs font-semibold tracking-wider uppercase">
+                  Web Design Premium
+                </div>
+              </FadeInSection>
 
-                <FadeInSection delay={200}>
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">
-                    Landing pages <br />
-                    que transformam <br />
-                    <span className="font-accent italic font-normal text-[#D4AF37] pr-2">seguidores</span>
-                    em
-                    <span className="gold-gradient-text"> Clientes.</span>
-                  </h1>
-                </FadeInSection>
+              <FadeInSection delay={200}>
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight">
+                  Landing pages <br />
+                  que transformam <br />
+                  <span className="font-accent italic font-normal text-[#D4AF37] pr-2">seguidores</span>
+                  em
+                  <span className="gold-gradient-text"> Clientes.</span>
+                </h1>
+              </FadeInSection>
 
-                <FadeInSection delay={400}>
-                  <p className="text-gray-400 text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
-                    Sites rápidos, modernos e com visual premium — feitos para aumentar sua conversão e destacar seu negócio no digital.
-                  </p>
-                </FadeInSection>
+              <FadeInSection delay={400}>
+                <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+                  Sites rápidos, modernos e com visual premium — feitos para aumentar sua conversão e destacar seu negócio no digital.
+                </p>
+              </FadeInSection>
 
-                <FadeInSection delay={600}>
-                  <div className="flex flex-col sm:flex-row gap-4 items-center w-full lg:w-auto">
-                    <a 
-                      href={whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-pulse inline-flex items-center justify-center gap-3 bg-[#D4AF37] text-black text-lg font-bold px-8 py-4 rounded-full hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-[0_0_30px_rgba(212,175,55,0.3)] w-full sm:w-auto"
-                    >
-                      <Smartphone size={24} />
-                      Criar Landing Page
-                    </a>
-                  </div>
-                  <p className="mt-6 text-xs text-gray-500 flex flex-wrap items-center gap-3 opacity-80 justify-center lg:justify-start">
-                    <span className="flex items-center gap-1"><Check size={12} className="text-[#D4AF37]" /> Entrega rápida</span>
-                    <span className="hidden sm:inline w-1 h-1 rounded-full bg-gray-600"></span>
-                    <span className="flex items-center gap-1"><Check size={12} className="text-[#D4AF37]" /> Visual profissional</span>
-                  </p>
-                </FadeInSection>
-              </div>
+              <FadeInSection delay={600}>
+                <a 
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-pulse inline-flex items-center justify-center gap-3 bg-[#D4AF37] text-black text-lg font-bold px-8 py-4 rounded-full hover:bg-white transition-all duration-300 transform hover:scale-105 shadow-[0_0_30px_rgba(212,175,55,0.3)]"
+                >
+                  <Smartphone size={24} />
+                  Criar Landing Page
+                </a>
+                <p className="mt-6 text-xs text-gray-500 flex flex-wrap items-center justify-center gap-3 opacity-80">
+                  <span className="flex items-center gap-1"><Check size={12} className="text-[#D4AF37]" /> Entrega rápida</span>
+                  <span className="hidden sm:inline w-1 h-1 rounded-full bg-gray-600"></span>
+                  <span className="flex items-center gap-1"><Check size={12} className="text-[#D4AF37]" /> Visual profissional</span>
+                </p>
+              </FadeInSection>
 
-              {/* Direita */}
-              <div className="lg:w-1/2 relative w-full flex justify-center lg:justify-end">
-                <FadeInSection delay={400}>
-                  <div className="relative w-full max-w-[500px] lg:max-w-full">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-[#D4AF37] blur-[100px] opacity-20 rounded-full animate-pulse"></div>
-                    
-                    <div className="relative z-10 rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
-                       <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent opacity-60 z-20"></div>
-                       
-                       <img 
-                         src="hero-image.jpg" 
-                         onError={(e) => {
-                             e.target.onerror = null; 
-                             e.target.src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800";
-                         }}
-                         alt="Gustavo Carrias - Web Designer" 
-                         className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700 ease-out hero-image-mask"
-                       />
-                    </div>
-
-                    <div className="absolute -bottom-6 -left-6 z-30 glass-panel p-4 rounded-xl flex items-center gap-3 animate-bounce shadow-lg" style={{ animationDuration: '3s' }}>
-                      <div className="bg-green-500/20 p-2 rounded-full text-green-500">
-                        <Zap size={20} fill="currentColor" />
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-400">Status</p>
-                        <p className="text-sm font-bold text-white">Disponível para Projetos</p>
-                      </div>
-                    </div>
-                  </div>
-                </FadeInSection>
-              </div>
             </div>
             <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0D0D0D] to-transparent pointer-events-none z-20"></div>
           </section>
@@ -474,15 +438,13 @@
                <div className="w-[500px] h-[500px] bg-[#D4AF37] rounded-full blur-[120px]"></div>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 flex flex-col-reverse lg:flex-row items-center gap-12">
-              
-              {/* Conteúdo de Texto e Botão */}
-              <FadeInSection className="lg:w-1/2 text-center lg:text-left">
+            <div className="container mx-auto px-6 relative z-10 text-center">
+              <FadeInSection>
                 <h2 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                   Pronto para ter uma <br />
                   <span className="text-[#D4AF37]">landpage profissional?</span>
                 </h2>
-                <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto lg:mx-0">
+                <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
                   Chama no WhatsApp e vamos criar algo incrível para o seu negócio ainda esta semana.
                 </p>
                 <a 
@@ -495,16 +457,6 @@
                   Falar com Gustavo
                 </a>
               </FadeInSection>
-
-              {/* Imagem Apontando */}
-              <FadeInSection className="lg:w-1/2 flex justify-center lg:justify-start" delay={200}>
-                <img 
-                  src="imagem-sem-fundo.png" 
-                  alt="Gustavo Carrias apontando para o botão" 
-                  className="w-full max-w-md lg:max-w-lg h-auto object-cover transform scale-x-[-1]"
-                />
-              </FadeInSection>
-
             </div>
           </section>
 
